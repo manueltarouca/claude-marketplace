@@ -61,8 +61,18 @@ skill's job — use it rather than hand-writing SKILL.md.
 claude plugin validate .
 ```
 
-It catches malformed entries and missing fields. A broken `marketplace.json` fails the
-whole marketplace for anyone who has it added, not just the plugin you touched.
+Check its **exit code**, not just its output — `claude plugin validate . | tail -2` in an
+`&&` chain always reports success, because the pipe masks the failure. A broken
+`marketplace.json` fails the whole marketplace for everyone who has it added, not just the
+plugin you touched.
+
+## Known quirk: elevenlabs registers a stray agent
+
+Upstream's `agents/SKILL.md` is a *skill* about building voice agents, but the default
+`agents/` scan also reads it as a subagent named `SKILL`. Cosmetic, ~120 tokens. Two fixes
+were tried and neither works — `"agents": []` is accepted but ignored, and any path
+override (`"agents": "./.agents/"`) fails validation with `Invalid input` and, once pushed,
+drops the plugin to **0 skills**. Leave it alone unless upstream restructures.
 
 ## Token cost is the real constraint
 
