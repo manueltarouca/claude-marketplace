@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "matm-skills",
+  "displayName": "matm skills",
+  "description": "Manuel's own skills. Currently: codex-imagegen, local image generation through the Codex CLI with no API keys.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Manuel Tarouca",
+    "url": "https://github.com/manueltarouca"
+  },
+  "repository": "https://github.com/manueltarouca/claude-marketplace",
+  "license": "MIT",
+  "keywords": ["imagegen", "codex", "assets"]
+}

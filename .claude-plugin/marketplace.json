@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "matm",
+  "description": "Manuel Tarouca's personal Claude Code marketplace: own skills, plus third-party skill collections tracked live from their upstream repos.",
+  "owner": {
+    "name": "Manuel Tarouca",
+    "email": "manuel+claude@matm.xyz",
+    "url": "https://github.com/manueltarouca"
+  },
+  "plugins": [
+    {
+      "name": "matm-skills",
+      "displayName": "matm skills",
+      "description": "Manuel's own skills. Currently: codex-imagegen, local image generation through the Codex CLI with no API keys.",
+      "source": "./plugins/matm-skills",
+      "category": "productivity",
+      "keywords": ["imagegen", "codex", "assets"]
+    },
+    {
+      "name": "phaser",
+      "displayName": "Phaser 4",
+      "description": "Official Phaser 4 skills, tracked live from the phaserjs/phaser repo: scenes, sprites, tweens, animations, arcade & matter physics, tilemaps, particles, cameras, input, audio, filters/postfx, scale, and v3-to-v4 migration.",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/phaserjs/phaser.git",
+        "path": "skills",
+        "ref": "master"
+      },
+      "skills": "./",
+      "strict": false,
+      "homepage": "https://phaser.io",
+      "repository": "https://github.com/phaserjs/phaser",
+      "license": "MIT",
+      "category": "gamedev",
+      "keywords": ["phaser", "gamedev", "html5", "webgl", "canvas", "2d"]
+    },
+    {
+      "name": "elevenlabs",
+      "displayName": "ElevenLabs",
+      "description": "Official ElevenLabs skills, tracked live from the elevenlabs/skills repo: text-to-speech, music, sound effects, dubbing, speech-to-text, voice changer, voice isolator, speech engine, and conversational agents. Needs ELEVENLABS_API_KEY.",
+      "source": {
+        "source": "github",
+        "repo": "elevenlabs/skills",
+        "ref": "main"
+      },
+      "skills": "./",
+      "strict": false,
+      "homepage": "https://elevenlabs.io",
+      "repository": "https://github.com/elevenlabs/skills",
+      "license": "MIT",
+      "category": "media",
+      "keywords": ["elevenlabs", "tts", "audio", "music", "sfx", "voice"]
+    }
+  ]
+}
