@@ -14,7 +14,11 @@
       "description": "Manuel's own skills. Currently: codex-imagegen, local image generation through the Codex CLI with no API keys.",
       "source": "./plugins/matm-skills",
       "category": "productivity",
-      "keywords": ["imagegen", "codex", "assets"]
+      "keywords": [
+        "imagegen",
+        "codex",
+        "assets"
+      ]
     },
     {
       "name": "phaser",
@@ -32,7 +36,14 @@
       "repository": "https://github.com/phaserjs/phaser",
       "license": "MIT",
       "category": "gamedev",
-      "keywords": ["phaser", "gamedev", "html5", "webgl", "canvas", "2d"]
+      "keywords": [
+        "phaser",
+        "gamedev",
+        "html5",
+        "webgl",
+        "canvas",
+        "2d"
+      ]
     },
     {
       "name": "elevenlabs",
@@ -44,12 +55,20 @@
         "ref": "main"
       },
       "skills": "./",
+      "agents": [],
       "strict": false,
       "homepage": "https://elevenlabs.io",
       "repository": "https://github.com/elevenlabs/skills",
       "license": "MIT",
       "category": "media",
-      "keywords": ["elevenlabs", "tts", "audio", "music", "sfx", "voice"]
+      "keywords": [
+        "elevenlabs",
+        "tts",
+        "audio",
+        "music",
+        "sfx",
+        "voice"
+      ]
     }
   ]
 }
