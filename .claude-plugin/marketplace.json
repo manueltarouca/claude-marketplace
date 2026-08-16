@@ -48,16 +48,16 @@
     {
       "name": "elevenlabs",
       "displayName": "ElevenLabs",
-      "description": "Official ElevenLabs skills, tracked live from the elevenlabs/skills repo: text-to-speech, music, sound effects, dubbing, speech-to-text, voice changer, voice isolator, speech engine, and conversational agents. Needs ELEVENLABS_API_KEY.",
+      "description": "Official ElevenLabs skills, tracked from a light fork of elevenlabs/skills: text-to-speech, music, sound effects, dubbing, speech-to-text, voice changer, voice isolator, speech engine, and conversational agents. Needs ELEVENLABS_API_KEY.",
       "source": {
         "source": "github",
-        "repo": "elevenlabs/skills",
-        "ref": "main"
+        "repo": "manueltarouca/elevenlabs-skills",
+        "ref": "matm"
       },
       "skills": "./",
       "strict": false,
       "homepage": "https://elevenlabs.io",
-      "repository": "https://github.com/elevenlabs/skills",
+      "repository": "https://github.com/manueltarouca/elevenlabs-skills",
       "license": "MIT",
       "category": "media",
       "keywords": [
