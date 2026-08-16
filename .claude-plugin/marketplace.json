@@ -55,7 +55,7 @@
         "ref": "main"
       },
       "skills": "./",
-      "agents": "./.agents/",
+      "agents": [],
       "strict": false,
       "homepage": "https://elevenlabs.io",
       "repository": "https://github.com/elevenlabs/skills",
