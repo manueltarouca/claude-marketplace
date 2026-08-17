@@ -68,6 +68,37 @@
         "sfx",
         "voice"
       ]
+    },
+    {
+      "name": "chrome-devtools",
+      "displayName": "Chrome DevTools",
+      "description": "Drive and debug Chrome from Claude: DOM and network inspection, performance traces, LCP and memory-leak analysis, accessibility auditing. Bundles the official chrome-devtools-mcp server plus its six skills.",
+      "source": {
+        "source": "npm",
+        "package": "chrome-devtools-mcp",
+        "version": "1.7.0"
+      },
+      "mcpServers": {
+        "chrome-devtools": {
+          "command": "node",
+          "args": [
+            "${CLAUDE_PLUGIN_ROOT}/build/src/bin/chrome-devtools-mcp.js"
+          ]
+        }
+      },
+      "strict": false,
+      "homepage": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "repository": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+      "license": "Apache-2.0",
+      "category": "debugging",
+      "keywords": [
+        "chrome",
+        "devtools",
+        "puppeteer",
+        "performance",
+        "a11y",
+        "mcp"
+      ]
     }
   ]
 }
