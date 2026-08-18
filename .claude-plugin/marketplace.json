@@ -82,7 +82,8 @@
         "chrome-devtools": {
           "command": "node",
           "args": [
-            "${CLAUDE_PLUGIN_ROOT}/build/src/bin/chrome-devtools-mcp.js"
+            "${CLAUDE_PLUGIN_ROOT}/build/src/bin/chrome-devtools-mcp.js",
+            "--autoConnect"
           ]
         }
       },

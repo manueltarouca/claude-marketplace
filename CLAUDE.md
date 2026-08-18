@@ -94,6 +94,13 @@ would download a *second* copy on every launch and let the server drift out of s
 the skills shipped beside it. `skills/` still gets scanned by default, so no `skills`
 override is needed — only `"strict": false`, since there is no `plugin.json`.
 
+`--autoConnect` attaches to Manuel's own running Chrome and its default profile instead of
+launching an isolated one, so logged-in pages and the tabs he already has open are visible.
+It needs Chrome 144+ and remote debugging enabled once at `chrome://inspect/#remote-debugging`;
+Chrome must already be running when the server starts. Don't swap it for `--browserUrl` —
+that needs Chrome relaunched with `--remote-debugging-port`, and since Chrome 136 that flag
+is refused on the default profile, which forces a throwaway profile with no logins.
+
 ## elevenlabs runs from our fork
 
 `elevenlabs` is sourced from `manueltarouca/elevenlabs-skills`, branch **`matm`**, not from
