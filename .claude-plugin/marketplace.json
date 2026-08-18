@@ -76,7 +76,7 @@
       "source": {
         "source": "npm",
         "package": "chrome-devtools-mcp",
-        "version": "1.7.0"
+        "version": "^1.7.0"
       },
       "mcpServers": {
         "chrome-devtools": {
