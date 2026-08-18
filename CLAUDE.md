@@ -26,10 +26,19 @@ Pick the source by where the skills sit upstream:
 |---|---|
 | Skills at repo root (`music/SKILL.md`) | `{"source": "github", "repo": "owner/repo", "ref": "main"}` |
 | Skills in a subdir (`skills/tweens/SKILL.md`) | `{"source": "git-subdir", "url": "https://github.com/owner/repo.git", "path": "skills", "ref": "master"}` |
+| Repo unclonable, but published to npm | `{"source": "npm", "package": "name", "version": "^1.7.0"}` |
 | Ours | `"source": "./plugins/matm-skills"` |
 
 Use `git-subdir` whenever the skills are a subdirectory of a large repo — it sparse-clones
 only that path. Phaser's repo is 470 MB; the sparse clone is 640 KB.
+
+Reach for `npm` when a git source is impossible. `chrome-devtools` is the case: its repo
+ships a perfectly good `.claude-plugin/marketplace.json`, but a `devtools-frontend`
+submodule recursively drags in Chromium's `depot_tools` and LLVM, so `/plugin marketplace
+add ChromeDevTools/chrome-devtools-mcp` times out cloning gigabytes. Its npm tarball is
+2.3 MB with zero runtime dependencies. Prefer a version *range* over an exact pin — npm
+sources derive no version of their own, so an exact pin means the plugin silently never
+updates.
 
 Upstream repos that ship no `.claude-plugin/plugin.json` need two extra fields on the
 entry, or the skills won't be found:
@@ -66,13 +75,50 @@ Check its **exit code**, not just its output — `claude plugin validate . | tai
 `marketplace.json` fails the whole marketplace for everyone who has it added, not just the
 plugin you touched.
 
-## Known quirk: elevenlabs registers a stray agent
+## An npm source needs its MCP config supplied here
 
-Upstream's `agents/SKILL.md` is a *skill* about building voice agents, but the default
-`agents/` scan also reads it as a subagent named `SKILL`. Cosmetic, ~120 tokens. Two fixes
-were tried and neither works — `"agents": []` is accepted but ignored, and any path
-override (`"agents": "./.agents/"`) fails validation with `Invalid input` and, once pushed,
-drops the plugin to **0 skills**. Leave it alone unless upstream restructures.
+npm tarballs usually exclude `.claude-plugin/`, so the entry has to carry what the
+manifest would have. `chrome-devtools` declares its server inline:
+
+```json
+"mcpServers": {
+  "chrome-devtools": {
+    "command": "node",
+    "args": ["${CLAUDE_PLUGIN_ROOT}/build/src/bin/chrome-devtools-mcp.js"]
+  }
+}
+```
+
+Run the binary out of `${CLAUDE_PLUGIN_ROOT}` rather than `npx package@version`. `npx`
+would download a *second* copy on every launch and let the server drift out of sync with
+the skills shipped beside it. `skills/` still gets scanned by default, so no `skills`
+override is needed — only `"strict": false`, since there is no `plugin.json`.
+
+## elevenlabs runs from our fork
+
+`elevenlabs` is sourced from `manueltarouca/elevenlabs-skills`, branch **`matm`**, not from
+upstream. Upstream's `agents/` is a *skill* directory, but Claude Code also scans `agents/`
+for subagents, so `agents/SKILL.md` was registered twice — once as the `agents` skill and
+once as a subagent literally named `SKILL`. Nothing in a marketplace entry fixes it:
+`"agents": []` validates but is ignored, and any path override fails validation with
+`Invalid input` and drops the plugin to **0 skills**. The fork renames the directory to
+`voice-agents/`; the skill's frontmatter `name:` is untouched, so the rename is invisible
+to users.
+
+Keep the fork honest:
+
+```bash
+cd ~/code/open-source/elevenlabs-skills
+git fetch upstream
+git checkout main && git merge --ff-only upstream/main && git push origin main
+git checkout matm && git rebase main && git push --force-with-lease origin matm
+claude plugin update elevenlabs@matm
+```
+
+`main` stays a pristine mirror so it always fast-forwards; `matm` is just main plus the one
+rename. A conflict there means upstream touched `agents/` — re-do the rename rather than
+resolving hunks. This is the only fork we maintain, and it exists solely because the fix is
+unreachable from the marketplace entry. Don't fork to make cosmetic changes.
 
 ## Token cost is the real constraint
 
@@ -80,9 +126,12 @@ Every enabled plugin's skill descriptions load into *every* session. Run
 `claude plugin details <plugin>` for the always-on number before recommending a scope:
 
 - **User scope** (`~/.claude/settings.json`) — for plugins that are cheap or broadly useful.
-  `matm-skills` (~260 tok) and `elevenlabs` (~1k tok) live here.
+  `matm-skills` (~277), `elevenlabs` (~1,331) and `chrome-devtools` (~630) live here.
 - **Project scope** (`.claude/settings.json` in the repo) — for expensive or narrow plugins.
-  `phaser` is ~3.2k always-on for 28 skills, so it is enabled only in `~/code/games/*`.
+  `phaser` is ~3,221 always-on for 28 skills, so it is enabled only in `~/code/games/*`.
+
+MCP tool schemas are *not* in the always-on number — they resolve at runtime when the
+server starts, and for a server the size of chrome-devtools that is the larger cost.
 
 ## Renaming
 
