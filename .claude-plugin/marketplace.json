@@ -100,6 +100,27 @@
         "a11y",
         "mcp"
       ]
+    },
+    {
+      "name": "unslop",
+      "displayName": "Unslop",
+      "description": "Cut AI tells from writing: puffery, formulaic transitions, em-dash tics, vague attributions, and the rest. Rewrites for specificity and voice.",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/cursor/plugins.git",
+        "path": "pstack/skills/unslop",
+        "ref": "main"
+      },
+      "strict": false,
+      "homepage": "https://github.com/cursor/plugins/tree/main/pstack/skills/unslop",
+      "repository": "https://github.com/cursor/plugins",
+      "category": "writing",
+      "keywords": [
+        "writing",
+        "editing",
+        "style",
+        "ai-tells"
+      ]
     }
   ]
 }
