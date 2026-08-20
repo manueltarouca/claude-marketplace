@@ -1,0 +1,13 @@
+{
+  "eval_id": 0,
+  "eval_name": "eval-0-readme-rewrite",
+  "prompt": "This README reads like a bot wrote it. Clean it up.",
+  "assertions": [
+    "All headings use sentence case",
+    "No filler or belittling words (simply, just, easily, in order to, utilize, e.g., note that)",
+    "Addresses the reader in second person rather than 'we'",
+    "No vague link text ('click here')",
+    "Uses present tense, not future ('will be generated')",
+    "Preserves every technical fact (commands, env var, flags, layout, Node version)"
+  ]
+}

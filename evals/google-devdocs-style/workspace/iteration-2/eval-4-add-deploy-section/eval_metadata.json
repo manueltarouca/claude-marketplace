@@ -1,0 +1,16 @@
+{
+  "eval_id": 4,
+  "eval_name": "eval-4-add-deploy-section",
+  "prompt": "Add a deployment section to the docs. We deploy to itch.io with the butler CLI...",
+  "assertions": [
+    "Existing content left intact",
+    "New heading uses sentence case",
+    "New heading uses an imperative verb, not a gerund",
+    "No filler in the added text",
+    "Added text uses second person, not 'we'",
+    "Added text uses present tense",
+    "Manual deploy marked with the 'Optional:' prefix",
+    "Conditions come before instructions",
+    "States every fact given in the request"
+  ]
+}

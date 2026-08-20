@@ -1,0 +1,56 @@
+{
+  "skill_name": "crazygames-publishing",
+  "evals": [
+    {
+      "id": 0,
+      "name": "folklore-vs-documented",
+      "prompt": "im about to start building a browser game for crazygames and i want to get the constraints right before i write any code. what do i actually need to hit? ive read that it has to run at a locked 60fps, that everything has to be webp and ogg, and that you cant use localStorage because of their sandbox. is all that right? give me the real list.",
+      "expected_output": "Corrects all three false premises explicitly as NOT documented, and supplies the real documented constraints (1 click to gameplay, legibility sizes, 50/20MB initial download, 144/165Hz physics, mouse+keyboard+touch, relative paths).",
+      "files": [],
+      "assertions": [
+        "States that no framerate/60 FPS requirement is documented, correcting the user's premise",
+        "States that no required or banned file formats are documented (webp/ogg is folklore)",
+        "States that localStorage is not documented as blocked",
+        "Gives the max-1-click-to-gameplay rule",
+        "Gives the 50 MB initial download limit (and/or the 20 MB mobile-homepage figure)",
+        "Gives at least one of the QA legibility resolutions (821x462 or 800x450)",
+        "Mentions frame-rate independence at 144 Hz and 165 Hz as the real timing rule",
+        "Mentions the relative-paths-only requirement",
+        "Explicitly separates documented facts from things the docs do not state"
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "here's my game loop - a wave survival thing, sessions run about 8-10 min. i want to put ads in. where do they go and what do i have to call? plain html5 canvas, no engine.",
+      "name": "ad-placement-and-sdk",
+      "expected_output": "Uses v3 SDK with awaited init(), the four game events, requestAd with midgame/rewarded and the callback shape. States mute+pause on adStarted, no reward on adError, never during gameplay, and the 1-per-3-minutes server-side cap.",
+      "files": [],
+      "assertions": [
+        "Uses SDK v3 (crazygames-sdk-v3.js and/or awaited SDK.init()), not v2 calls like sdkGameLoadingStart",
+        "Shows requestAd with the ad type string 'midgame' and/or 'rewarded'",
+        "Shows the adStarted/adFinished/adError callback shape",
+        "States that audio must be muted while the ad plays",
+        "States that the game must be paused during the ad",
+        "States that ads must not interrupt active gameplay, only transitions",
+        "States the 1-midgame-ad-per-3-minutes cap",
+        "States that no reward is granted on adError",
+        "Mentions gameplayStart/gameplayStop around the ad or the session"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "prelaunch-audit",
+      "prompt": "my game is done and built to ./dist, im about to submit it. can you check it over and tell me whats going to get me rejected? also what cover art do i need to make",
+      "expected_output": "Runs the bundled check-build.mjs against dist, reports its findings, is explicit about what the script cannot check, and gives the three cover sizes (1920x1080, 800x1200, 800x800).",
+      "files": [],
+      "assertions": [
+        "Actually runs or reports the output of the bundled check-build.mjs script",
+        "Identifies the absolute asset paths in the fixture as a blocking problem",
+        "Identifies that the fixture ships the v2 SDK and that v3 is current",
+        "Identifies the prohibited requestFullscreen call",
+        "Is explicit that some requirements (legibility, ad placement, originality) are not machine-checkable",
+        "Gives all three cover sizes: 1920x1080, 800x1200, 800x800"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "expectations": [
+    {
+      "text": "All headings use sentence case",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "No filler or belittling words",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Timeless: no 'currently', 'at this time', or 'new' as novelty",
+      "passed": false,
+      "evidence": "found: ['right now']"
+    },
+    {
+      "text": "No vague link text",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Preserves every rule and technical fact",
+      "passed": true,
+      "evidence": "all present"
+    }
+  ],
+  "passed": 4,
+  "total": 5,
+  "pass_rate": 0.8
+}

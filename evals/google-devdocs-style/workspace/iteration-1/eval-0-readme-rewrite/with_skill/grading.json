@@ -1,0 +1,37 @@
+{
+  "expectations": [
+    {
+      "text": "All headings use sentence case",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "No filler or belittling words (simply, just, easily, in order to, utilize, e.g., note that)",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Addresses the reader in second person rather than 'we'",
+      "passed": true,
+      "evidence": "'we/our/us' count: 0"
+    },
+    {
+      "text": "No vague link text ('click here')",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Uses present tense, not future ('will be generated')",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Preserves every technical fact (commands, env var, flags, layout, Node version)",
+      "passed": true,
+      "evidence": "all present"
+    }
+  ],
+  "passed": 6,
+  "total": 6,
+  "pass_rate": 1.0
+}

@@ -1,0 +1,47 @@
+{
+  "expectations": [
+    {
+      "text": "All headings use sentence case",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Task headings use imperative verbs, not gerunds ('Get started' not 'Getting started')",
+      "passed": false,
+      "evidence": "gerund headings: ['Getting started']"
+    },
+    {
+      "text": "No filler or belittling words",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Second person, no 'we'",
+      "passed": true,
+      "evidence": "'we/our/us' count: 0"
+    },
+    {
+      "text": "Present tense, not future",
+      "passed": false,
+      "evidence": "found: ['will fail', 'will fail']"
+    },
+    {
+      "text": "Literals in code font, bold not used for paths or commands",
+      "passed": false,
+      "evidence": "code-font literals: 17, bolded literals: 4"
+    },
+    {
+      "text": "Conditions come before instructions",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Covers the real project facts from package.json and the src tree",
+      "passed": false,
+      "evidence": "missing: ['src/scenes', 'src/entities', 'src/systems']"
+    }
+  ],
+  "passed": 4,
+  "total": 8,
+  "pass_rate": 0.5
+}

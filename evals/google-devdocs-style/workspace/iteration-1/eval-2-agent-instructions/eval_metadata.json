@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "eval-2-agent-instructions",
+  "prompt": "Tidy up the CLAUDE.md for this project.",
+  "assertions": [
+    "All headings use sentence case",
+    "No filler or belittling words",
+    "Timeless: no 'currently', 'at this time', or 'new' as novelty",
+    "No vague link text",
+    "Preserves every rule and technical fact"
+  ]
+}

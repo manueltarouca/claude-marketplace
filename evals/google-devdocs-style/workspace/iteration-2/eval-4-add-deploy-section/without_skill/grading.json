@@ -1,0 +1,52 @@
+{
+  "expectations": [
+    {
+      "text": "Existing content left intact",
+      "passed": true,
+      "evidence": "intact"
+    },
+    {
+      "text": "New heading uses sentence case",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "New heading uses an imperative verb, not a gerund",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "No filler in the added text",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Added text uses second person, not 'we'",
+      "passed": true,
+      "evidence": "'we/our/us': 0"
+    },
+    {
+      "text": "Added text uses present tense",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Manual deploy marked with the 'Optional:' prefix",
+      "passed": false,
+      "evidence": "no Optional: prefix on the by-hand path"
+    },
+    {
+      "text": "Conditions come before instructions",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "States every fact given in the request",
+      "passed": true,
+      "evidence": "all present"
+    }
+  ],
+  "passed": 8,
+  "total": 9,
+  "pass_rate": 0.889
+}

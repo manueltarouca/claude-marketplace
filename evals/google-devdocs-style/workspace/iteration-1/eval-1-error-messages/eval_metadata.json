@@ -1,0 +1,14 @@
+{
+  "eval_id": 1,
+  "eval_name": "eval-1-error-messages",
+  "prompt": "Our CLI error messages are useless when something breaks. Reword them.",
+  "assertions": [
+    "Keeps every exported key and the file's TypeScript shape",
+    "No exclamation points in messages",
+    "Does not blame the reader",
+    "No apologies or 'Oops'",
+    "No double negatives",
+    "Replaces violent or ableist terms (sanity check, insane, abort)",
+    "Most messages tell the reader what to do next (>=70%)"
+  ]
+}

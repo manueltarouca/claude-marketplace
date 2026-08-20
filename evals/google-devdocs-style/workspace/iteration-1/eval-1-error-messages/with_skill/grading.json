@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "Keeps every exported key and the file's TypeScript shape",
+      "passed": true,
+      "evidence": "all present"
+    },
+    {
+      "text": "No exclamation points in messages",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Does not blame the reader",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "No apologies or 'Oops'",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "No double negatives",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Replaces violent or ableist terms (sanity check, insane, abort)",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Most messages tell the reader what to do next (>=70%)",
+      "passed": true,
+      "evidence": "10/13 substantive messages name a next step"
+    }
+  ],
+  "passed": 7,
+  "total": 7,
+  "pass_rate": 1.0
+}

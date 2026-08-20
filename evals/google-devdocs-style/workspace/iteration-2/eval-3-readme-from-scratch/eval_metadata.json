@@ -1,0 +1,15 @@
+{
+  "eval_id": 3,
+  "eval_name": "eval-3-readme-from-scratch",
+  "prompt": "Write a README for this project.",
+  "assertions": [
+    "All headings use sentence case",
+    "Task headings use imperative verbs, not gerunds ('Get started' not 'Getting started')",
+    "No filler or belittling words",
+    "Second person, no 'we'",
+    "Present tense, not future",
+    "Literals in code font, bold not used for paths or commands",
+    "Conditions come before instructions",
+    "Covers the real project facts from package.json and the src tree"
+  ]
+}

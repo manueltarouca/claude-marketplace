@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "Adds both keys with the requested names",
+      "passed": true,
+      "evidence": "present: ['atlasTooBig', 'badChannel']"
+    },
+    {
+      "text": "Leaves the existing entries unchanged",
+      "passed": true,
+      "evidence": "kept 7/7"
+    },
+    {
+      "text": "No exclamation points",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Positive phrasing ('Can't' / states the condition) over 'Failed to'",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "No violent or ableist terms",
+      "passed": true,
+      "evidence": "clean"
+    },
+    {
+      "text": "Both messages tell the reader what to do next",
+      "passed": true,
+      "evidence": "2/2 name a next step"
+    },
+    {
+      "text": "Names the concrete limit (4096) and the valid channels",
+      "passed": true,
+      "evidence": "4096: True, channel list: True"
+    }
+  ],
+  "passed": 7,
+  "total": 7,
+  "pass_rate": 1.0
+}
