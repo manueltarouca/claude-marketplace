@@ -2,13 +2,21 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "matm-skills",
   "displayName": "matm skills",
-  "description": "Manuel's own skills. Currently: codex-imagegen, local image generation through the Codex CLI with no API keys.",
-  "version": "0.1.0",
+  "description": "Manuel's own skills: codex-imagegen (local image generation through Codex CLI), llmp-inference (local LiteLLM proxy over a ChatGPT subscription for scripted/batch inference), crazygames-publishing, google-devdocs-style.",
+  "version": "0.2.0",
   "author": {
     "name": "Manuel Tarouca",
     "url": "https://github.com/manueltarouca"
   },
   "repository": "https://github.com/manueltarouca/claude-marketplace",
   "license": "MIT",
-  "keywords": ["imagegen", "codex", "assets"]
+  "keywords": [
+    "assets",
+    "batch",
+    "codex",
+    "imagegen",
+    "inference",
+    "litellm",
+    "translation"
+  ]
 }
