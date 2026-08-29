@@ -3,7 +3,7 @@
   "name": "matm-skills",
   "displayName": "matm skills",
   "description": "Manuel's own skills: codex-imagegen (local image generation through Codex CLI), llmp-inference (local LiteLLM proxy over a ChatGPT subscription for scripted/batch inference), crazygames-publishing, google-devdocs-style.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": {
     "name": "Manuel Tarouca",
     "url": "https://github.com/manueltarouca"

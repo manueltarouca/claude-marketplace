@@ -1,6 +1,6 @@
 ---
 name: llmp-inference
-description: Use the local `llmp` proxy (LiteLLM over the user's ChatGPT subscription, OpenAI-compatible at http://127.0.0.1:4000/v1, no API key) as the inference endpoint whenever a project needs to call an LLM from code rather than from a harness like Claude Code or Codex. Covers bringing the proxy up, model choice (gpt-5.6-sol/terra/luna), structured JSON output via forced function tools, and a bundled resumable batch runner. Reach for it for any scripted or bulk LLM work — batch translation/localization (e.g. Japanese game strings → English), classification, extraction, summarisation, tagging, data cleaning, synthetic data, LLM-as-judge, image generation from a script — and whenever the user asks for "an endpoint", "an API key for OpenAI/GPT", "which model should I use", or wants to automate inference without paying per token. Do NOT use for interactive chat or for work Claude itself should just do in this session.
+description: Use the local `llmp` proxy (LiteLLM over the user's ChatGPT subscription, OpenAI-compatible at http://127.0.0.1:4000/v1, no API key) as the inference endpoint whenever a project needs to call an LLM from code rather than from a harness like Claude Code or Codex. Covers bringing the proxy up, model choice (gpt-5.6-sol/terra/luna), structured JSON output via forced function tools, and a bundled resumable batch runner. Reach for it for any scripted or bulk LLM work — batch translation/localization (e.g. Japanese game strings → English), classification, extraction, summarisation, tagging, data cleaning, synthetic data, LLM-as-judge, image generation from a script — and whenever the user asks for "an endpoint", "an API key for OpenAI/GPT", "which model should I use", or wants to automate inference without paying per token. Also use it when the proxy misbehaves or a bug/feature request for llmp comes up — it files issues on manueltarouca/litellm-proxy with gh. Do NOT use for interactive chat or for work Claude itself should just do in this session.
 ---
 
 # llmp-inference
@@ -88,3 +88,50 @@ Workflow that works well:
 For one-off structured calls from your own code, read
 `references/api-patterns.md` (OpenAI SDK snippets for chat, responses, forced
 tool output, streaming, image generation, concurrency/retry guidance).
+
+## File issues when llmp gets in the way
+
+`llmp` lives at `manueltarouca/litellm-proxy` and the user wants problems
+tracked there rather than worked around silently and forgotten. Whenever you
+hit something in this list, file an issue with `gh` — as part of the work, not
+as a question at the end:
+
+- the proxy returns 5xx or malformed responses for a well-formed request
+  (after `llmp restart` did not help)
+- a parameter or endpoint a client reasonably expects is missing or silently
+  dropped and it is not already documented above
+- `scripts/batch.py` or `llmp <cmd>` misbehaves, or you had to write a helper
+  that the runner should have covered
+- a LiteLLM upgrade makes one of the patches in `patches.py` unnecessary or
+  breaks it
+- a model name from the Codex backend is missing from the config
+
+Search first so the same bug is not filed twice, then file:
+
+```bash
+gh issue list -R manueltarouca/litellm-proxy --search "<key words>" --state all
+gh issue create -R manueltarouca/litellm-proxy --label bug \
+  --title "<symptom in one line>" \
+  --body "$(cat <<'EOF'
+## What happened
+<one paragraph: what was sent, what came back>
+
+## Repro
+<curl or python snippet against http://127.0.0.1:4000, minimal>
+
+## Environment
+- llmp: `uv tool list | grep litellm-proxy`, litellm version from `llmp logs`
+- model: <model>
+- log excerpt: `llmp logs -n 30` (trim to the relevant lines)
+
+## Workaround used
+<what you did to keep going, or "none">
+EOF
+)"
+```
+
+Use `--label enhancement` for missing features, `bug` for breakage. Keep
+tokens, account ids and prompt content out of the body — the log lines you
+paste should be the error, not the request. Tell the user the issue URL in
+your summary so it doesn't get lost. If an existing issue matches, add a
+comment with your repro instead of a new issue (`gh issue comment <n> -R … --body …`).
